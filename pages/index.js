@@ -19,12 +19,17 @@ export default function Home() {
           Get started by editing <code>pages/index.js</code>
         </p>
 
-        <p className={styles.description}>
-          Go to{' '}
-          <Link className={styles.description} href='/posts/first-post'>
-            posts
+        <div className='Nav' style={{ display: 'flex', gap: '10px' }}>
+          <Link className={styles.description} href='/users'>
+            Users
           </Link>
-        </p>
+          <Link className={styles.description} href='/posts/first-post'>
+            Posts
+          </Link>
+          <Link className={styles.description} href='/comments'>
+            Comments
+          </Link>
+        </div>
 
         <div className={styles.grid}>
           <a href='https://nextjs.org/docs' className={styles.card}>
