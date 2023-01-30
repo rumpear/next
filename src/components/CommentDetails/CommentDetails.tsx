@@ -1,4 +1,4 @@
-const CommentDetails = ({ comment }) => {
+const CommentDetails = ({ comment }: any) => {
   console.log(comment, 'comment');
   return (
     <>
