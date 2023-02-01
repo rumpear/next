@@ -1,10 +1,16 @@
 import Link from 'next/link';
+import Layout, { withLayout } from '../../src/components/Layout/Layout';
+import { IUserData } from '../../src/interfaces';
 
-export default function Users({ data }: any) {
+export interface IUsersProps extends Record<string, unknown> {
+  data: IUserData[];
+}
+
+function Users({ data }: IUsersProps) {
   return (
     <>
       <ul>
-        {data?.map((user: any) => (
+        {data?.map((user: IUserData) => (
           <li key={user.id}>
             <Link href={`/users/${user.id}`}>{user.name}</Link>
           </li>
@@ -22,3 +28,5 @@ export async function getStaticProps() {
     props: { data },
   };
 }
+
+export default withLayout(Users);
