@@ -1,17 +1,12 @@
 import axios from 'axios';
-import { GetStaticProps, GetStaticPropsResult, GetStaticPaths } from 'next';
+import { GetStaticProps, GetStaticPaths } from 'next';
 import {
   ICourseProps,
-  ICourseRes,
   ICourseStaticProps,
 } from '../../src/interfaces/courses.interface';
-import {
-  ICourseAlias,
-  IMenu,
-  IMenuRes,
-} from '../../src/interfaces/menu.interface';
+import { ICourseAlias, IMenu } from '../../src/interfaces/menu.interface';
 import { IProduct } from '../../src/interfaces/products.interface';
-import { ITopPage, ITopRes } from '../../src/interfaces/topPage.interface';
+import { ITopPage } from '../../src/interfaces/topPage.interface';
 // import { getStaticPaths } from '../users/[id]';
 
 const PRODUCTS_LIMIT = 10;
