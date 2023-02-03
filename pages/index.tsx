@@ -23,6 +23,12 @@ export default function Home() {
           <Link className={styles.description} href="/comments">
             Comments
           </Link>
+          <Link className={styles.description} href="/images">
+            Images
+          </Link>
+          <Link className={styles.description} href="/courses">
+            Courses
+          </Link>
         </div>
 
         <div className={styles.grid}>
