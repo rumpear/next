@@ -42,7 +42,7 @@ export interface ILearningClub {
   _id: string;
 }
 
-export interface ITop {
+export interface ITopPage {
   _id: string;
   tags: string[];
   secondCategory: string;
@@ -65,8 +65,4 @@ export interface ITop {
   blog: IBlog;
   sravnikus: ISravnikus;
   learningclub: ILearningClub;
-}
-
-export interface ITopRes {
-  data: ITop[];
 }
