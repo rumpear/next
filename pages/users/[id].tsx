@@ -5,7 +5,6 @@ import plane from '../../src/assets/svg/plane.svg';
 import { useEffect, useState } from 'react';
 import { IUserData } from '../../src/interfaces';
 import { withLayout } from '../../src/components/Layout/Layout';
-// import './styles.scss';
 
 interface IUserProps extends Record<string, unknown> {
   data: IUserData;
@@ -70,8 +69,15 @@ export const getStaticProps: GetStaticProps<
   IUserStaticProps,
   IUserId
 > = async ({ params }): Promise<GetStaticPropsResult<IUserStaticProps>> => {
-  const id = params?.id;
-  const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+  if (!params) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const res = await fetch(
+    `https://jsonplaceholder.typicode.com/users/${params.id}`,
+  );
   const data: IUserData[] = await res.json();
 
   return {
@@ -86,6 +92,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = data.map((data: IUserData) => ({
     params: { id: data.id.toString() },
   }));
+
+  console.log(paths, 'user');
 
   return { paths, fallback: false };
 };
