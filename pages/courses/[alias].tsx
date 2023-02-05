@@ -19,6 +19,8 @@ const Course = ({ menu, products, page }: ICourseProps) => {
   return (
     <>
       <h1>Courses page</h1>
+      {/* <h1>{products.length}</h1> */}
+      <h1>Courses page</h1>
     </>
   );
 };
@@ -37,8 +39,8 @@ export const getStaticProps: GetStaticProps<
 
   const { data: menu } = await axios.post<IMenu[]>(
     process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
-    { firstCategory: FIRST_CATEGORY },
-    // { category: 'Photoshop', limit: 10 },
+    // { firstCategory: FIRST_CATEGORY },
+    { category: 'Photoshop', limit: 10 },
   );
 
   const { data: page } = await axios.get<ITopPage>(
@@ -62,19 +64,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
     // { category: 'Photoshop', limit: 10 },
   );
 
-  const paths = menu.flatMap(({ pages }) => {
-    return pages.map(page => ({
-      params: {
-        alias: '/courses' + page.alias,
-      },
-    }));
-    // return { params: { alias: pages } };
-  });
+  //* v1
+  // const paths = menu.flatMap(({ pages }) => {
+  //   return pages.map(page => ({
+  //     params: {
+  //       alias: '/courses' + page.alias,
+  //     },
+  //   }));
+  // });
 
-  console.log(paths, 'paths');
+  //* v2
+  // const paths = menu.flatMap(({ pages }) => {
+  //   console.log(pages, 'pages');
+  //   return pages.map(page => '/courses' + page.alias);
+  // });
+
+  // console.log(paths, 'paths');
 
   return {
-    paths,
+    // paths,
+    //* v3
+    paths: menu.flatMap(m => m.pages.map(p => '/courses' + p.alias)),
     fallback: true,
   };
 };
