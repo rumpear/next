@@ -12,7 +12,7 @@ import { ITopPage } from '../../src/interfaces/topPage.interface';
 const PRODUCTS_LIMIT = 10;
 const FIRST_CATEGORY = 0;
 
-const Course = ({ menu, products, page }: ICourseProps) => {
+const Courses = ({ menu, products, page }: ICourseProps) => {
   console.log(menu, 'menu Course');
   console.log(page, 'page Course');
   console.log(products, 'products Course');
@@ -25,7 +25,7 @@ const Course = ({ menu, products, page }: ICourseProps) => {
   );
 };
 
-export default Course;
+export default Courses;
 
 export const getStaticProps: GetStaticProps<
   ICourseStaticProps,
@@ -81,10 +81,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   // console.log(paths, 'paths');
 
+  console.log(
+    menu.flatMap(m => m.pages.map(p => '/courses/' + p.alias)),
+    'dashdaskjdhas',
+  );
   return {
     // paths,
     //* v3
-    paths: menu.flatMap(m => m.pages.map(p => '/courses' + p.alias)),
+    paths: menu.flatMap(m => m.pages.map(p => '/courses/' + p.alias)),
     fallback: true,
   };
 };
