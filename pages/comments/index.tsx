@@ -1,15 +1,20 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 export default function Comments({ data }: any) {
-  const { pathname } = useRouter();
-
   return (
     <>
       <ul>
         {data?.map((comment: any) => (
           <li key={comment.id}>
-            <Link href={`/comments/${comment.id}`}>{comment.name}</Link>
+            <Link
+              href={`/comments/${comment.email}`}
+              as={{
+                pathname: `/comments/${comment.email}`,
+                query: { id: comment.id },
+              }}
+            >
+              {comment.name}
+            </Link>
           </li>
         ))}
       </ul>

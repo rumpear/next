@@ -4,7 +4,7 @@ import { CommentDetails } from '../../src/components';
 import { IMenu } from '../../src/interfaces/menu.interface';
 
 export default function Comment({ data, menu }: any) {
-  console.log(menu);
+  // console.log(menu);
   return (
     <div className="Comment">
       <p>{data?.name}</p>
@@ -20,14 +20,16 @@ export default function Comment({ data, menu }: any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const { id } = context.params!;
+  console.log(context.query, '_____________query');
+  console.log(context.params, '_____________params');
+  // const { id } = context.params!;
   const { data: menu } = await axios.get<IMenu[]>(
     process.env.NEXT_PUBLIC_DOMAIN + 'api/top-page/byAlias/' + 'photoshop',
     // { firstCategory: FIRST_CATEGORY },
   );
 
   const res = await fetch(
-    `https://jsonplaceholder.typicode.com/comments/${id}`,
+    `https://jsonplaceholder.typicode.com/comments/${context.query.id}`,
   );
   const data = await res.json();
 
