@@ -2,11 +2,7 @@ import axios from 'axios';
 import { GetStaticProps } from 'next';
 import { useState } from 'react';
 import { ButtonHtmlProps } from '../../src/components/ui';
-import {
-  IMenu,
-  IMenuProps,
-  IMenuRes,
-} from '../../src/interfaces/menu.interface';
+import { IMenu, IMenuProps } from '../../src/interfaces/menu.interface';
 
 const Menu = ({ menuData }: IMenuProps) => {
   const [showCategory, setShowCategory] = useState({});
@@ -62,7 +58,7 @@ export default Menu;
 
 export const getStaticProps: GetStaticProps = async () => {
   const firstCategory = 0;
-  const { data: menuData } = await axios.post<IMenuRes>(
+  const { data: menuData } = await axios.post<IMenu[]>(
     process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
     { firstCategory },
   );

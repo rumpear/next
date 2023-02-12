@@ -1,16 +1,9 @@
 import { ParsedUrlQuery } from 'querystring';
-
-export interface IMenuRes {
-  data: IMenu[];
-}
-
 export interface IMenu {
-  _id: IMenuId;
+  _id: {
+    secondCategory: string;
+  };
   pages: IMenuPage[];
-}
-
-export interface IMenuId {
-  secondCategory: string;
 }
 
 export interface IMenuPage {
