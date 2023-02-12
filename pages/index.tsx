@@ -29,6 +29,9 @@ export default function Home() {
           <Link className={styles.description} href="/courses">
             Courses
           </Link>
+          <Link className={styles.description} href="/menu">
+            Menu
+          </Link>
         </div>
 
         <div className={styles.grid}>
