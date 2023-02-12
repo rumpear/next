@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Layout, { withLayout } from '../../src/components/Layout/Layout';
+import { withLayout } from '../../src/components/Layout/Layout';
 import { IUserData } from '../../src/interfaces';
 
 export interface IUsersProps extends Record<string, unknown> {
