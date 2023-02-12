@@ -48,23 +48,6 @@ function User({ data }: IUserProps) {
 
 export default withLayout(User);
 
-// interface Props {
-//   props: {
-//     data: GetStaticProps;
-//   };
-// }
-
-// export async function getStaticProps(context: any): Promise<Props> {
-//   const { id } = context.params;
-
-//   const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
-//   const data = await res.json();
-
-//   return {
-//     props: { data },
-//   };
-// }
-
 export const getStaticProps: GetStaticProps<
   IUserStaticProps,
   IUserId
@@ -92,8 +75,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = data.map((data: IUserData) => ({
     params: { id: data.id.toString() },
   }));
-
-  console.log(paths, 'user');
 
   return { paths, fallback: false };
 };
